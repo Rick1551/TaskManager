@@ -11,11 +11,11 @@ public:
 	//Getters
 	const std::string& getTitle() const noexcept;
 	const std::string& getDescription() const noexcept;
-	std::string getDueDate() const; //fecha formateada
+	std::string getDueDateString() const; //fecha formateada
 
 	//Setters
 	void setCompleted(bool completed) noexcept;
-	void isCompleted() const noexcept;
+	bool isCompleted() const noexcept;
 
 private:
 	std::string title;
