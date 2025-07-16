@@ -1,21 +1,30 @@
-cmake_minimum_required(VERSION 3.20)  # Necesario para C++20
+cmake_minimum_required(VERSION 3.20)
 project(TaskManager LANGUAGES CXX)
 
+# Configuración del estándar C++
 set(CMAKE_CXX_STANDARD 20)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
-# Opciones para Visual Studio (Windows)
-if (MSVC)
-    add_compile_options(/W4 /WX)  # Máximo nivel de warnings y tratarlos como errores
+# Opciones para Visual Studio
+if(MSVC)
+    add_compile_options(/W4 /WX)
 endif()
 
-# Archivos fuente
-include_directories(include)
-file(GLOB SOURCES "src/*.cpp")
+# Lista explícita de archivos fuente (mejor práctica que file(GLOB))
+set(SOURCES
+    src/main.cpp
+    src/Task.cpp
+    src/TaskManager.cpp
+)
 
-# Ejecutable principal
+# Crear el ejecutable usando la variable SOURCES
 add_executable(TaskManager ${SOURCES})
 
-# Si usas librerías externas (ej: nlohmann/json para persistencia en JSON)
-# find_package(nlohmann_json REQUIRED)
-# target_link_libraries(TaskManager PRIVATE nlohmann_json::nlohmann_json)
+# Configurar los includes DESPUÉS de crear el ejecutable
+target_include_directories(TaskManager PRIVATE 
+    ${CMAKE_CURRENT_SOURCE_DIR}/include
+)
+
+# Opcional: Configurar propiedades adicionales
+# target_compile_definitions(TaskManager PRIVATE SOME_DEFINITION)
+# target_link_libraries(TaskManager PRIVATE some_library)

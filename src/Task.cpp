@@ -13,9 +13,10 @@ std::string Task::getDueDateString() const {
     auto in_time_t = std::chrono::system_clock::to_time_t(dueDate);
     std::tm tm{};
     localtime_s(&tm, &in_time_t);  // Windows-safe (en Linux usa localtime_r)
-    return std::format("{:%Y-%m-%d %H:%M:%S}", tm);  // C++20 <format>
+    std::ostringstream oss;
+    oss << std::put_time(&tm, "%Y-%m-%d %H:%M:%S");
+    return oss.str();
 }
-
 // Setters
-void Task::setCompleted(bool completed) noexcept { this->completed = completed; }
+void Task::setCompleted(bool newCompleted) noexcept { this->completed = newCompleted; }
 bool Task::isCompleted() const noexcept { return completed; }

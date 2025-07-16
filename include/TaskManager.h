@@ -16,11 +16,3 @@ public:
 private:
 	std::vector<Task> tasks;
 };
-
-TaskManager::TaskManager()
-{
-}
-
-TaskManager::~TaskManager()
-{
-}
