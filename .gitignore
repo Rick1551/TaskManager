@@ -1,0 +1,33 @@
+# Ignorar archivos generados por Visual Studio
+*.sln
+*.vcxproj
+*.vcxproj.filters
+*.vcxproj.user
+*.suo
+*.aps
+*.cachefile
+*.opensdf
+*.sdf
+*.log
+*.tlog
+*.db
+*.idb
+*.pdb
+*.ipch
+*.ilk
+*.meta
+*.obj
+*.pch
+
+# Ignorar carpetas de build
+[Bb]uild/
+[Dd]ebug/
+[Rr]elease/
+x64/
+x86/
+out/
+bin/
+.vs/
+
+# Ignorar archivos de datos locales (si no quieres subirlos)
+data/
